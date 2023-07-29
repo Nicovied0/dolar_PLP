@@ -13,7 +13,7 @@ export class NavComponent {
   }
 
   goRegister(){
-    this.router.navigate(['/'])
+    this.router.navigate(['/register'])
   }
   goParticipanst(){
     this.router.navigate(['/'])
