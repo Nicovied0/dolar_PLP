@@ -6,7 +6,7 @@ import { WinnerComponent } from './winner/winner.component';
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'winner', component: WinnerComponent },
-  { path: '/participants', component: ParticipantsComponent },
+  { path: 'participants', component: ParticipantsComponent },
   { path: '', component: ParticipantsComponent },
 ];
 

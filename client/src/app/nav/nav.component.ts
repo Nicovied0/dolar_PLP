@@ -15,8 +15,8 @@ export class NavComponent {
   goRegister(){
     this.router.navigate(['/register'])
   }
-  goParticipanst(){
-    this.router.navigate(['/participanst'])
+  goParticipants(){
+    this.router.navigate(['/participants'])
   }
   goWins(){
     this.router.navigate(['/winner'])
