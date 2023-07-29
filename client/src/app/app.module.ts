@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { RegisterComponent } from './register/register.component';
 import { ParticipantsComponent } from './participants/participants.component';
+import { WinnerComponent } from './winner/winner.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     RegisterComponent,
-    ParticipantsComponent
+    ParticipantsComponent,
+    WinnerComponent
   ],
   imports: [
     BrowserModule,
