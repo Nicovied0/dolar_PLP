@@ -18,8 +18,8 @@ app.use(
 const dbConnect = require("./src/config/mongo");
 
 // Importar las rutas desde la carpeta "routes"
-const routes = require("./src/routes/index");
-app.use("/", routes);
+// const routes = require("./src/routes/index");
+// app.use("/", routes);
 // app.use("/api", require("./src/routes"));
 
 dbConnect().then(
