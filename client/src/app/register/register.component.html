@@ -3,19 +3,62 @@
     <h2>Registro</h2>
   </div>
   <form class="form">
-    <label>Dni</label>
-    <input>
-    <label>Nombre</label>
-    <input>
-    <label>Correo Electrónico</label>
-    <input>
-    <label>Email</label>
-    <input>
-    <label>Fecha de Nacimiento</label>
-    <input>
-    <label>Acepto bases y condiciones</label>
-    <input>
-    <button class="button">Registrarse</button>
+    <div class="mb-6">
+      <label class="block text-sm font-bold mb-2">Dni</label>
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="Dni"
+        type="number"
+        placeholder="Dni"
+      />
+    </div>
+
+    <div class="mb-6">
+      <label class="block text-sm font-bold mb-2">Nombre</label>
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="Nombre"
+        type="text"
+        placeholder="Nombre"
+      />
+    </div>
+
+    <div class="mb-6">
+      <label class="block text-sm font-bold mb-2">Correo Electrónico</label>
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="Email"
+        type="email"
+        placeholder="Email"
+      />
+    </div>
+
+    <div class="mb-6">
+      <label class="block text-sm font-bold mb-2">Fecha de Nacimiento</label>
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        type="date"
+        id="fecha_nacimiento"
+        name="fecha_nacimiento"
+        min="1900-01-01"
+        max="2005-12-31"
+        required
+      />
+    </div>
+
+    <div class="mb-6 flex-row" >
+      <label class="block text-sm font-bold mb-2"
+        >Acepto bases y condiciones</label
+      >
+      <input id="select" type="checkbox" />
+    </div>
+    <div class="mb-6  ">
+      <button
+      class="button transform motion-reduce:transform-none hover:-translate-y-1 hover:scale-110 transition ease-in-out duration-300"
+    >
+      Registrarse
+    </button>
+    </div>
+
   </form>
 </section>
-
