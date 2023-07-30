@@ -36,7 +36,18 @@
   transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
-.button:hover{
+.button:hover {
   background: #fffdf77d !important;
   border-color: #fffdf77d !important;
 }
+
+.inputs {
+  margin: 0 1rem 0 0;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
