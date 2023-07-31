@@ -1,14 +1,18 @@
-.conteiner {
-  height: calc(100vh - 90px - 80px);
+.container {
+  min-height: calc(100vh - 90px - 80px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   margin-top: 5rem;
-
+  margin-bottom: 5rem;
 }
 
-/* Add these CSS styles in your component's CSS file or in the global styles */
+.divContent {
+  width: 100%;
+  max-width: 800px; /* Set a maximum width for the content */
+  padding: 1rem;
+}
 
 /* Style the table */
 .table {
@@ -21,17 +25,33 @@
 .table th {
   background-color: #00000030;
   text-align: left;
-  padding: 1.7rem 4rem;
+  padding: 1rem 2rem; /* Reduce padding for smaller screens */
 }
 
 /* Style the table cells */
 .table td {
   border: 1px solid #232323;
-  padding: 1.3rem 2rem;
+  padding: 1rem 2rem; /* Reduce padding for smaller screens */
 }
 
 .divTitle {
   display: flex;
   align-items: baseline;
   justify-content: center;
+}
+
+/* Responsive styles using media queries */
+
+/* On smaller screens, reduce font size for better fit */
+@media (max-width: 600px) {
+  .divTitle h2 {
+    font-size: 1.1rem;
+  }
+  .divTitle h2.ml-3 {
+    font-size: 1.6rem;
+  }
+  .table th,
+  .table td {
+    padding: 0.8rem 1rem;
+  }
 }

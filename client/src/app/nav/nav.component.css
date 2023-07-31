@@ -23,3 +23,15 @@
   color: #fdc501;
   filter: drop-shadow(2px 4px 6px black);
 }
+
+/* Add media query to hide the logo image on small screens */
+@media screen and (max-width: 768px) {
+  .logo {
+    display: none;
+  }
+}
+@media screen and (min-width: 768px) {
+  .logo2 {
+    display: none;
+  }
+}
