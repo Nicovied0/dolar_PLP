@@ -29,10 +29,12 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  fechaDeRegistro: {
+    type: Date,
+    required: true,
+    default: Date.now, // Valor por defecto: fecha actual al momento de creación
+  }
 });
-
-
-
 
 // Crear y exportar el modelo de usuario
 const User = mongoose.model("User", userSchema);
