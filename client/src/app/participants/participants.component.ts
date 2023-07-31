@@ -21,7 +21,6 @@ export class ParticipantsComponent implements OnInit {
     this.participantesService.obtenerUltimosParticipantes().subscribe(
       (data: any[]) => {
         this.ultimosParticipantes = data;
-        console.log(data)
       },
       error => {
         console.error('Error al obtener los últimos participantes:', error);

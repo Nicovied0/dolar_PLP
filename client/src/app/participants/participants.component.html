@@ -1,14 +1,25 @@
 <section class="conteiner">
-  <div>
-    <h2>Cantidad total de participantes</h2>
-    <h2>{{ cantidadTotalParticipantes }}</h2>
-  </div>
-  <div *ngIf="ultimosParticipantes.length > 0">
-    <h4>id</h4>
-    <h4>Fecha</h4>
-    <div *ngFor="let participante of ultimosParticipantes">
-      <p>{{ participante._id }}</p>
-      <p>{{ participante.fechaDeRegistro | date }}</p>
+  <div class="Div">
+    <div class="divTitle">
+      <h2 style="font-size: 1.3rem;">Cantidad total de participantes</h2>
+      <h2 style="font-size: 2rem;color: #276749;" class="ml-3">{{ cantidadTotalParticipantes }}</h2>
     </div>
+    <div *ngIf="ultimosParticipantes.length > 0">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Participante</th>
+            <th>Fecha de Registro</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let participante of ultimosParticipantes">
+            <td>{{ participante._id }}</td>
+            <td>{{ participante.fechaDeRegistro | date }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
   </div>
 </section>
