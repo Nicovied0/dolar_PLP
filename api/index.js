@@ -18,13 +18,14 @@ app.use(
 const dbConnect = require("./src/config/mongo");
 
 // Importar las rutas desde la carpeta "routes"
-// const routes = require("./src/routes/index");
-// app.use("/", routes);
-// app.use("/api", require("./src/routes"));
+const routes = require("./src/routes/index");
+
+// Montar las rutas en la aplicación
+app.use("/", routes);
 
 dbConnect().then(
   (res) => {
-    app.listen(process.env.PORT, () => {
+    app.listen(PORT, () => {
       console.log("Successfully connected");
       console.log(`Servidor Express escuchando en el puerto ${PORT}`);
     });
