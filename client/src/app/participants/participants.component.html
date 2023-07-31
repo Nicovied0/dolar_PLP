@@ -1,11 +1,14 @@
 <section class="conteiner">
   <div>
-    <h2>Total de participantes</h2>
-    <h2>x numero</h2>
+    <h2>Cantidad total de participantes</h2>
+    <h2>{{ cantidadTotalParticipantes }}</h2>
   </div>
-<div>
-  <h4>Name</h4>
-  <h4>id</h4>
-  <h4>Fecha </h4>
-</div>
+  <div *ngIf="ultimosParticipantes.length > 0">
+    <h4>id</h4>
+    <h4>Fecha</h4>
+    <div *ngFor="let participante of ultimosParticipantes">
+      <p>{{ participante._id }}</p>
+      <p>{{ participante.fechaDeRegistro | date }}</p>
+    </div>
+  </div>
 </section>

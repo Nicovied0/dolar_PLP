@@ -14,6 +14,19 @@ router.get("/", async (req, res) => {
     res.status(500).json({ error: "Error al obtener los usuarios" });
   }
 });
+router.get("/:id", async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const usuario = await User.findById(userId);
+    if (!usuario) {
+      return res.status(404).json({ error: "Usuario no encontrado" });
+    }
+    res.json(usuario);
+  } catch (error) {
+    console.error("Error al obtener el usuario:", error);
+    res.status(500).json({ error: "Error al obtener el usuario" });
+  }
+});
 
 router.post("/", (req, res) => {
   const { dni, nombre, email, telefono, fechaNacimiento,valorDolar } = req.body;
