@@ -1,4 +1,4 @@
-<section class="conteiner m-20">
+<section class="conteiner m-20" *ngIf="!registroCerrado">
   <div>
     <h2>Registrate para participar</h2>
   </div>
@@ -76,4 +76,11 @@
       </button>
     </div>
   </form>
+</section>
+
+<section class="conteiner m-20" id="registroCerrado" *ngIf="registroCerrado">
+  <h2>¡Registro cerrado!</h2>
+  <p>
+    El plazo para participar en la timba ha finalizado.
+  </p>
 </section>
