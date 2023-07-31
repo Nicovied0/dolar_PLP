@@ -4,7 +4,8 @@
 @tailwind utilities;
 
 
-body{
-  background: #1c1b18!important;
+body {
+  background: #1c1b18 !important;
   color: white;
+  font-family: 'Roboto', sans-serif
 }

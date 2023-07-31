@@ -9,7 +9,8 @@
 .form {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: stretch;
+  width: 50%;
 }
 
 .button {
@@ -50,4 +51,3 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
