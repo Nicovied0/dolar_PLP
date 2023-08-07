@@ -88,6 +88,9 @@ export class RegisterComponent implements OnInit {
             localStorage.setItem('userRegisterDolar', JSON.stringify(nuevoUsuario));
             console.log('Usuario registrado exitosamente:', response);
             Swal.fire('Registro Exitoso', '¡El usuario ha sido registrado exitosamente!', 'success');
+            setTimeout(() => {
+              window.location.reload()
+            }, 2000)
           },
           error => {
             Swal.fire('Error al registrarte', 'No se a podido registrar correctamente', 'error')

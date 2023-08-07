@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ParticipantsService {
-  private apiUrl = 'https://dolar-plp-back.vercel.app/';
+  private apiUrl = 'https://dolar-plp-back.vercel.app';
   constructor(private http: HttpClient) { }
 
   obtenerUltimosParticipantes(): Observable<any[]> {
