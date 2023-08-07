@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ParticipantsService {
-  private apiUrl = 'http://localhost:3001';
+  private apiUrl = 'https://dolar-plp-back.vercel.app/';
   constructor(private http: HttpClient) { }
 
   obtenerUltimosParticipantes(): Observable<any[]> {
@@ -21,7 +21,7 @@ export class ParticipantsService {
 
   obtenerCantidadTotalParticipantes(): Observable<number> {
     return this.http.get<any[]>(`${this.apiUrl}/`).pipe(
-      map((data: any[]) => data.length) // Mapping the response to return the length of the array
+      map((data: any[]) => data.length)
     );
   }
 }

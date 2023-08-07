@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./winner.component.css']
 })
 export class WinnerComponent implements OnInit {
-  ganador: any; // Aquí almacenaremos la información del ganador
+  ganador: any; 
 
   constructor(private http: HttpClient) { }
 
@@ -16,7 +16,7 @@ export class WinnerComponent implements OnInit {
   }
 
   obtenerGanador() {
-    this.http.get<any[]>('http://localhost:3001/').subscribe(
+    this.http.get<any[]>('https://dolar-plp-back.vercel.app/').subscribe(
       response => {
         const ganadores = response.filter(usuario => usuario.userWinner === true);
         if (ganadores.length > 0) {

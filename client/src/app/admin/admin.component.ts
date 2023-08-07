@@ -19,7 +19,7 @@ export class AdminComponent {
 
     const requestBody = { valorDolar: this.valorDolar };
 
-    this.http.post<any>('http://localhost:3001/precio', requestBody).subscribe(
+    this.http.post<any>('https://dolar-plp-back.vercel.app/precio', requestBody).subscribe(
       response => {
         this.usuarioGanador = response;
       },
@@ -37,7 +37,7 @@ export class AdminComponent {
         valorDolar: this.valorDolar
       };
 
-      this.http.put<any>('http://localhost:3001/' + this.usuarioGanador._id, updatedUser).subscribe(
+      this.http.put<any>('https://dolar-plp-back.vercel.app/' + this.usuarioGanador._id, updatedUser).subscribe(
         response => {
           console.log('Usuario actualizado exitosamente:', response);
         },

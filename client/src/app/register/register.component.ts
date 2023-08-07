@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
   }
 
   async verificarExistencia(email: string, dni: string): Promise<boolean> {
-    const url = `http://localhost:3001/`;
+    const url = `https://dolar-plp-back.vercel.app/`;
     try {
       const usuarios: any[] | undefined = await this.http.get<any[]>(url).toPromise();
       if (usuarios === undefined) {
@@ -83,7 +83,7 @@ export class RegisterComponent implements OnInit {
 
         console.log('Enviando datos:', nuevoUsuario);
 
-        this.http.post<any>('http://localhost:3001/', nuevoUsuario).subscribe(
+        this.http.post<any>('https://dolar-plp-back.vercel.app/', nuevoUsuario).subscribe(
           response => {
             localStorage.setItem('userRegisterDolar', JSON.stringify(nuevoUsuario));
             console.log('Usuario registrado exitosamente:', response);
