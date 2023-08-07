@@ -35,6 +35,10 @@ const userSchema = new Schema({
     type: Boolean,
     default: true,
   },
+  userWinner: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 // Crear y exportar el modelo de usuario

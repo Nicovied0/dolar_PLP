@@ -1,0 +1,54 @@
+<div class="conteiner">
+  <div class="conteiner2">
+    <label for="valorDolar">Valor del Dolar:</label>
+    <input
+      type="text"
+      id="valorDolar"
+      [(ngModel)]="valorDolar"
+      style="
+        color: black;
+        border: none;
+        padding: 0.3rem;
+        border-radius: 1rem;
+        margin: 0.3rem 0;
+      "
+    />
+    <button
+      (click)="buscarGanador()"
+      style="
+        cursor: pointer;
+        padding: 0.4rem;
+        background: #198754;
+        color: white;
+        margin-top: 0.8rem;
+        border-radius: 1rem;
+      "
+    >
+      Buscar Ganador
+    </button>
+  </div>
+
+  <div *ngIf="usuarioGanador">
+    <div>
+      <div style="margin: 1rem">
+        <h3>Usuario Ganador</h3>
+        <p>DNI: {{ usuarioGanador.dni }}</p>
+        <p>Nombre: {{ usuarioGanador.nombre }}</p>
+        <p>Email: {{ usuarioGanador.email }}</p>
+        <p>Valor Dolar: {{ usuarioGanador.valorDolar }}</p>
+      </div>
+      <button
+        (click)="editarGanador()"
+        style="
+          cursor: pointer;
+          padding: 1rem;
+          background: #0d6efd;
+          color: white;
+          border-radius: 1rem;
+        "
+      >
+        Editar y Marcar como Ganador
+      </button>
+    </div>
+  </div>
+</div>

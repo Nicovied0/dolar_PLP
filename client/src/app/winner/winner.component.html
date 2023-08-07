@@ -1,3 +1,14 @@
-<div class="conteiner">
-  <h2>El ganador se dara a conocer el 15 de agosto.</h2>
+<div >
+  <ng-container *ngIf="ganador; else noGanador">
+    <div class="container">
+      <h2>¡Tenemos un ganador!</h2>
+      <p>Nombre: {{ ganador.nombre }}</p>
+      <p style="color: #276749">Valor de dolar: ${{ ganador.valorDolar }}</p>
+    </div>
+  </ng-container>
+  <ng-template #noGanador>
+    <div class="container">
+      <h2>El ganador se dará a conocer el 15 de agosto.</h2>
+    </div>
+  </ng-template>
 </div>

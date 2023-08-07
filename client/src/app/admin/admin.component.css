@@ -1,0 +1,16 @@
+.conteiner {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+}
+
+.conteiner2{
+  display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    height: 30vh;
+}

@@ -1,6 +1,7 @@
 .link {
   color: rgba(255, 255, 255, .5);
   cursor: pointer;
+  margin: 0.9rem;
 }
 
 .header {
@@ -19,7 +20,7 @@
 
 }
 
-.link:hover{
+.link:hover {
   color: #fdc501;
   filter: drop-shadow(2px 4px 6px black);
 }
@@ -29,9 +30,34 @@
   .logo {
     display: none;
   }
+
+  .link {
+    margin: 0.3rem;
+  }
+
+  .header {
+    justify-content: space-between;
+    max-width: 85%;
+  }
 }
+
 @media screen and (min-width: 768px) {
   .logo2 {
     display: none;
   }
+
+}
+
+@media screen and (max-width: 478px) {
+  .logo2 {
+    display: none;
+
+  }
+
+  .header {
+    display: flex;
+    justify-content: center;
+    max-width: none;
+  }
+
 }

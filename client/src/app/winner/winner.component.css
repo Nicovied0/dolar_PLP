@@ -1,7 +1,7 @@
-.conteiner {
-  height: calc(100vh - 90px - 80px);
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 80vh;
   justify-content: center;
 }
