@@ -1,9 +1,6 @@
-// user.js
-
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-// Definir un schema para el modelo de usuario
 const userSchema = new Schema({
   dni: {
     type: String,
@@ -33,7 +30,11 @@ const userSchema = new Schema({
     type: Date,
     required: true,
     default: Date.now,
-  }
+  },
+  userRegister: {
+    type: Boolean,
+    default: true,
+  },
 });
 
 // Crear y exportar el modelo de usuario

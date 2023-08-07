@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-register',
@@ -11,6 +13,8 @@ export class RegisterComponent implements OnInit {
 
 
   public registroCerrado: boolean = false;
+  public userRegister: boolean = false
+  public validates: boolean = false;
 
 
   constructor(private http: HttpClient) { }
@@ -21,6 +25,14 @@ export class RegisterComponent implements OnInit {
     if (fechaActual >= fechaObjetivo) {
       this.registroCerrado = true;
     }
+    const localStorageData = localStorage.getItem('userRegisterDolar');
+    if (localStorageData !== null) {
+      const parsedData = JSON.parse(localStorageData).userRegister;
+      if (parsedData) {
+        this.userRegister = true
+      }
+    }
+
   }
 
   async verificarExistencia(email: string, dni: string): Promise<boolean> {
@@ -38,38 +50,47 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-
   async registrarUsuario(registroForm: NgForm) {
     console.log('Método registrarUsuario() ejecutado');
     if (registroForm.valid) {
-      const email = registroForm.value.email;
-      const dni = registroForm.value.dni;
+      const email = this.emailControl.value;
+      const dni = this.dniControl.value;
+
+
 
       try {
         const existeRegistro = await this.verificarExistencia(email, dni);
         if (existeRegistro) {
-          console.log('El email o DNI ya está registrado');
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Tu email o tu dni ya fue registrado',
+            showConfirmButton: false,
+            timer: 1000
+          })
           return;
         }
-
-
+        this.validates = true;
         const nuevoUsuario = {
           dni: dni,
-          nombre: registroForm.value.nombre,
+          nombre: this.nombreControl.value,
           email: email,
-          fechaNacimiento: registroForm.value.fecha_nacimiento,
-          valorDolar: registroForm.value.dolar,
-          telefono: registroForm.value.telefono
+          fechaNacimiento: this.fechaNacimientoControl.value,
+          valorDolar: this.usdControl.value,
+          telefono: this.telefonoControl.value,
+          userRegister: true
         };
 
         console.log('Enviando datos:', nuevoUsuario);
 
         this.http.post<any>('http://localhost:3001/', nuevoUsuario).subscribe(
           response => {
+            localStorage.setItem('userRegisterDolar', JSON.stringify(nuevoUsuario));
             console.log('Usuario registrado exitosamente:', response);
+            Swal.fire('Registro Exitoso', '¡El usuario ha sido registrado exitosamente!', 'success');
           },
           error => {
-            console.error('Error al registrar el usuario:', error);
+            Swal.fire('Error al registrarte', 'No se a podido registrar correctamente', 'error')
           }
         );
       } catch (error) {
@@ -81,7 +102,7 @@ export class RegisterComponent implements OnInit {
   }
 
 
-  // validaciones de forms
+
   nombreControl: FormControl = new FormControl('', [
     Validators.required,
     Validators.pattern('^[a-zA-Z ]{6,}$')
@@ -103,7 +124,7 @@ export class RegisterComponent implements OnInit {
   ]);
   usdControl: FormControl = new FormControl('', [
     Validators.required,
-    Validators.pattern('^[0-9]{8}$')
+    Validators.pattern(/^\d{1,5}(\.\d{1,2})?$/)
   ]);
 
   getFechaMinima(): string {

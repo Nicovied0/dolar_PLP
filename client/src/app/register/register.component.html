@@ -1,4 +1,4 @@
-<section class="conteiner m-20" *ngIf="!registroCerrado">
+<section class="conteiner m-20" *ngIf="!userRegister && !registroCerrado">
   <div>
     <h2>Registrate para participar</h2>
   </div>
@@ -8,7 +8,7 @@
     (ngSubmit)="registrarUsuario(registroForm)"
   >
     <div class="mb-6">
-      <label class="block text-sm font-bold mb-2">DNI</label>
+      <label class="block text-sm font-bold mb-2" for="dni">DNI</label>
       <input
         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         id="Dni"
@@ -33,7 +33,9 @@
     </div>
 
     <div class="mb-6">
-      <label class="block text-sm font-bold mb-2">Nombre y Apellido</label>
+      <label class="block text-sm font-bold mb-2" for="nombre"
+        >Nombre y Apellido</label
+      >
       <input
         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         id="Nombre"
@@ -58,7 +60,9 @@
     </div>
 
     <div class="mb-6">
-      <label class="block text-sm font-bold mb-2">Correo Electrónico</label>
+      <label class="block text-sm font-bold mb-2" for="email"
+        >Correo Electrónico</label
+      >
       <input
         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         id="Email"
@@ -82,7 +86,9 @@
       </div>
     </div>
     <div class="mb-6">
-      <label class="block text-sm font-bold mb-2">Teléfono</label>
+      <label class="block text-sm font-bold mb-2" for="telefono"
+        >Teléfono</label
+      >
       <input
         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         id="Telefono"
@@ -106,7 +112,9 @@
     </div>
 
     <div class="mb-6">
-      <label class="block text-sm font-bold mb-2">Fecha de Nacimiento</label>
+      <label class="block text-sm font-bold mb-2" for="fechaNacimiento"
+        >Fecha de Nacimiento</label
+      >
       <input
         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         type="date"
@@ -125,30 +133,18 @@
       </div>
     </div>
 
-    <div class="mb-6 flex flex-row">
-      <label class="block text-sm font-bold mb-2 inputs"
-        >Acepto bases y condiciones</label
-      >
-      <input
-        id="select"
-        type="checkbox"
-        class=""
-        name="basesYCondiciones"
-        ngModel
-        required
-      />
-    </div>
-
     <div
       class="mb-6 p-3"
       style="background-color: #276749; border-radius: 1rem"
     >
-      <label class="block text-sm font-bold mb-2">Precio del Dolar</label>
+      <label class="block text-sm font-bold mb-2" for="valorDolar"
+        >Precio del Dolar</label
+      >
       <div class="flex m-2">
         <input
           class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           id="Dolar"
-          type="text"
+          type="number"
           placeholder="Precio del Dolar"
           name="dolar"
           ngModel
@@ -156,16 +152,16 @@
           [formControl]="usdControl"
         />
         <label class="m-2">ARS</label>
-        <div
-          *ngIf="telefonoControl.invalid && telefonoControl.touched"
-          class="text-red-500 text-sm mt-1"
-        >
-          <div *ngIf="telefonoControl.hasError('required')">
-            El teléfono es obligatorio.
-          </div>
-          <div *ngIf="telefonoControl.hasError('pattern')">
-            Ingrese un número válido de teléfono.
-          </div>
+      </div>
+      <div
+        *ngIf="usdControl.invalid && usdControl.touched"
+        class="text-red-500 text-sm mt-1"
+      >
+        <div *ngIf="usdControl.hasError('required')">
+          El Valor es obligatorio.
+        </div>
+        <div *ngIf="usdControl.hasError('pattern')">
+          Ingrese un número válido de precio dolar no mayor a 5 digitos.
         </div>
       </div>
     </div>
@@ -174,7 +170,6 @@
       <button
         type="submit"
         class="button transform motion-reduce:transform-none hover:-translate-y-1 hover:scale-110 transition ease-in-out duration-300"
-        [disabled]="registroForm.invalid"
       >
         Registrarse
       </button>
@@ -185,4 +180,9 @@
 <section class="conteiner m-20" id="registroCerrado" *ngIf="registroCerrado">
   <h2>¡Registro cerrado!</h2>
   <p>El plazo para participar en la timba ha finalizado.</p>
+</section>
+
+<section class="conteiner m-20" id="registroCerrado" *ngIf="userRegister">
+  <h2>¡Ya te registraste!</h2>
+  <p>Espera al 15 de agosto para saber el ganador.</p>
 </section>
