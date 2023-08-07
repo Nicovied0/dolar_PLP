@@ -32,7 +32,7 @@ const userSchema = new Schema({
   fechaDeRegistro: {
     type: Date,
     required: true,
-    default: Date.now, // Valor por defecto: fecha actual al momento de creación
+    default: Date.now,
   }
 });
 

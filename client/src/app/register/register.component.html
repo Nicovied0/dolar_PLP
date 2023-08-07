@@ -2,7 +2,11 @@
   <div>
     <h2>Registrate para participar</h2>
   </div>
-  <form class="form m-5">
+  <form
+    class="form m-5"
+    #registroForm="ngForm"
+    (ngSubmit)="registrarUsuario(registroForm)"
+  >
     <div class="mb-6">
       <label class="block text-sm font-bold mb-2">DNI</label>
       <input
@@ -10,7 +14,22 @@
         id="Dni"
         type="number"
         placeholder="Dni"
+        name="dni"
+        ngModel
+        required
+        [formControl]="dniControl"
       />
+      <div
+        *ngIf="dniControl.invalid && dniControl.touched"
+        class="text-red-500 text-sm mt-1"
+      >
+        <div *ngIf="dniControl.hasError('required')">
+          El DNI es obligatorio.
+        </div>
+        <div *ngIf="dniControl.hasError('pattern')">
+          El DNI debe contener exactamente 8 dígitos numéricos.
+        </div>
+      </div>
     </div>
 
     <div class="mb-6">
@@ -20,7 +39,22 @@
         id="Nombre"
         type="text"
         placeholder="Nombre"
+        name="nombre"
+        ngModel
+        required
+        [formControl]="nombreControl"
       />
+      <div
+        *ngIf="nombreControl.invalid && nombreControl.touched"
+        class="text-red-500 text-sm mt-1"
+      >
+        <div *ngIf="nombreControl.hasError('required')">
+          El nombre es obligatorio.
+        </div>
+        <div *ngIf="nombreControl.hasError('pattern')">
+          El nombre debe contener solo letras ser de mas de 6 caracteres.
+        </div>
+      </div>
     </div>
 
     <div class="mb-6">
@@ -30,7 +64,45 @@
         id="Email"
         type="email"
         placeholder="Email"
+        name="email"
+        ngModel
+        required
+        [formControl]="emailControl"
       />
+      <div
+        *ngIf="emailControl.invalid && emailControl.touched"
+        class="text-red-500 text-sm mt-1"
+      >
+        <div *ngIf="emailControl.hasError('required')">
+          El correo electrónico es obligatorio.
+        </div>
+        <div *ngIf="emailControl.hasError('pattern')">
+          Ingrese un correo electrónico válido.
+        </div>
+      </div>
+    </div>
+    <div class="mb-6">
+      <label class="block text-sm font-bold mb-2">Teléfono</label>
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="Telefono"
+        type="number"
+        placeholder="Teléfono"
+        name="telefono"
+        ngModel
+        [formControl]="telefonoControl"
+      />
+      <div
+        *ngIf="telefonoControl.invalid && telefonoControl.touched"
+        class="text-red-500 text-sm mt-1"
+      >
+        <div *ngIf="telefonoControl.hasError('required')">
+          El teléfono es obligatorio.
+        </div>
+        <div *ngIf="telefonoControl.hasError('pattern')">
+          Ingrese un número válido de teléfono.
+        </div>
+      </div>
     </div>
 
     <div class="mb-6">
@@ -40,17 +112,31 @@
         type="date"
         id="fecha_nacimiento"
         name="fecha_nacimiento"
-        min="1900-01-01"
-        max="2005-12-31"
-        required
+        [formControl]="fechaNacimientoControl"
+        [max]="getFechaMinima()"
       />
+      <div
+        *ngIf="fechaNacimientoControl.invalid && fechaNacimientoControl.touched"
+        class="text-red-500 text-sm mt-1"
+      >
+        <div *ngIf="fechaNacimientoControl.hasError('required')">
+          La fecha de nacimiento es obligatoria.
+        </div>
+      </div>
     </div>
 
     <div class="mb-6 flex flex-row">
       <label class="block text-sm font-bold mb-2 inputs"
         >Acepto bases y condiciones</label
       >
-      <input id="select" type="checkbox" class="" />
+      <input
+        id="select"
+        type="checkbox"
+        class=""
+        name="basesYCondiciones"
+        ngModel
+        required
+      />
     </div>
 
     <div
@@ -64,13 +150,31 @@
           id="Dolar"
           type="text"
           placeholder="Precio del Dolar"
-        /><label class="m-2">ARS</label>
+          name="dolar"
+          ngModel
+          required
+          [formControl]="usdControl"
+        />
+        <label class="m-2">ARS</label>
+        <div
+          *ngIf="telefonoControl.invalid && telefonoControl.touched"
+          class="text-red-500 text-sm mt-1"
+        >
+          <div *ngIf="telefonoControl.hasError('required')">
+            El teléfono es obligatorio.
+          </div>
+          <div *ngIf="telefonoControl.hasError('pattern')">
+            Ingrese un número válido de teléfono.
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="mb-6">
       <button
+        type="submit"
         class="button transform motion-reduce:transform-none hover:-translate-y-1 hover:scale-110 transition ease-in-out duration-300"
+        [disabled]="registroForm.invalid"
       >
         Registrarse
       </button>
@@ -80,7 +184,5 @@
 
 <section class="conteiner m-20" id="registroCerrado" *ngIf="registroCerrado">
   <h2>¡Registro cerrado!</h2>
-  <p>
-    El plazo para participar en la timba ha finalizado.
-  </p>
+  <p>El plazo para participar en la timba ha finalizado.</p>
 </section>
